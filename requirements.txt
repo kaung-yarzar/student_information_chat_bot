@@ -1,6 +1,6 @@
 nltk
 
-nltk-wordnet
+nltk.download('wordnet')
 pymongo
 scikit-learn
 streamlit-option-menu
