@@ -1,4 +1,6 @@
 nltk
+
+nltk-wordnet
 pymongo
 scikit-learn
 streamlit-option-menu
