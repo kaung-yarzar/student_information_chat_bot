@@ -5,12 +5,6 @@ import string
 import streamlit as st
 import random
 import time
-
-nltk.download('punkt')
-nltk.download('punkt_tab')
-nltk.download('stopwords')
-nltk.download('wordnet')
-
 from nltk.stem import WordNetLemmatizer
 
 
@@ -24,6 +18,10 @@ collection = connect_training_data_collection()
 
 
 
+# nltk.download('wordnet')
+# nltk.download('punkt')
+# nltk.download('punkt_tab')
+# nltk.download('stopwords')
 
 
 # client = MongoClient('mongodb://admin:admin12345@cluster0-shard-00-00.g1sch.mongodb.net:27017,cluster0-shard-00-01.g1sch.mongodb.net:27017,cluster0-shard-00-02.g1sch.mongodb.net:27017/?ssl=true&replicaSet=atlas-i75tpn-shard-0&authSource=admin&retryWrites=true&w=majority&appName=Cluster0')
@@ -94,7 +92,7 @@ def generate_response(user_input):
 def response_delay(response):
     for word in response.split():
         yield word + " "
-        time.sleep(0.15)
+        time.sleep(0.12)
 
 import re
 

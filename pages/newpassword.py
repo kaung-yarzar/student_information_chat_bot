@@ -17,20 +17,27 @@ try:
     st.title('Password Reset')
 
     with st.form('Password Reset', clear_on_submit=True):
-        st.subheader(f'Username : **{user['username']}**')
-        st.write(user['security_question'])
+        #st.subheader(f'Username : **{user['username']}**')
+        
+        uname = st.text_input('Confirm  Your Username :')
         real_answer = user['security_answer']
-
-        answer = st.text_input('answer :') 
-        if st.form_submit_button('Submit'):
-
-            if answer == real_answer:
-                st.session_state['issuccess'] = 'success'
-                st.success('Please Input a New Password')
+        st.write(user['security_question'])
+        answer = st.text_input('Answer :') 
+        if st.form_submit_button('Submit'):   
+            if uname:
+                if answer:
+                    if uname == username:
+                        if answer == real_answer:
+                            st.session_state['issuccess'] = 'success'
+                            st.success('Please Input a New Password')
+                        else:
+                            st.error('Incorrect Answer. Please Try Again...')
+                    else:
+                        st.error('Incorrect Username. Please Try Again...')
+                else:
+                    st.error('Please Enter Your Answer')
             else:
-                st.error('Incorrect Answer. Please Try Again...')
-
-
+                st.error('Please Enter Your Username')
                 
 
     is_success = st.session_state['issuccess']
@@ -52,11 +59,11 @@ try:
                     st.success('Password Reset Successful!')
 
                 else:
-                    st.error('Password is Too Short')
+                    st.error('Password Must Contain at Least 8 Characters')
 
     c1,c2,c3 =st.columns(3)
     with c2:
-        st.page_link("app.py", label=" Go back to Home Page", icon="🏠")
+        st.page_link("app.py", label="Go back to Home Page", icon="🏠")
 
 
 except Exception as e:
@@ -78,3 +85,19 @@ st.markdown(
     </style>
     """,
     unsafe_allow_html=True,)
+
+st.markdown(
+    """
+    <style>
+    div[data-testid="stHeadingWithActionElements"]{
+         text-align: center;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+ 
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)

@@ -53,12 +53,12 @@ def sign_up():
         st.subheader('Create Account')
         
 
-        email = st.text_input('Email :')
-        username = st.text_input('Username :')
-        password = st.text_input('Password :',type = 'password')
-        confirm_password = st.text_input('Confirm Password :',type='password')
+        email = st.text_input(':red[*]Email :')
+        username = st.text_input(':red[*]Username :')
+        password = st.text_input(':red[*]Password :',type = 'password')
+        confirm_password = st.text_input(':red[*]Confirm Password :',type='password')
         option = st.selectbox(
-            "Security Question :",
+            ":red[*]Security Question :",
             ("Who is your favourite teacher?",
             "What is the name of your first pet?",
             "What is your favourite book?",
@@ -68,12 +68,12 @@ def sign_up():
             "Where is your home town?",
             "What is your dream?",
             "Who is your favourite star?"), )
-        answer = st.text_input( label ='Answer :')
+        answer = st.text_input( label =':red[*]Answer :')
 
 
         ## condition စစ်
-        if st.form_submit_button('Sign Up'):
-            if email:
+        if st.form_submit_button('Sign Up', type='primary'):
+            if email and username and password and confirm_password and answer:
                 if check_email(email) == True:
                     if validate_email(email) == True:
                         if username:
@@ -104,6 +104,8 @@ def sign_up():
                     else:
                         st.error('Your Account Is Already Exist. Please Try to Login Instead')
                 else:
-                    st.error('Enter a Valid  Email Address')
+                    st.error('Enter a Correct Email Address')
+            else:
+                st.error('Please fill out all **Required** fields')
         
  #######
