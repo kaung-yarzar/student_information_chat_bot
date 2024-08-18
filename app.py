@@ -93,10 +93,21 @@ def main():
 
             
     else:
-        #st.markdown("<h1 style='text-align: center;'>Student Information Chatbot</h1>", unsafe_allow_html=True)
-        st.title('Student Information Chatbot')
+        st.markdown("<h1 style='text-align: center;'>Student Information Chatbot</h1>", unsafe_allow_html=True)
+        #st.title('Student Information Chatbot')
         st.markdown(' ')
         st.markdown(' ')
+
+        st.markdown("""
+        <style>
+        div[data-testid="stHeadingWithActionElements"]{
+        text-align: center;
+        display: block;
+        margin-left: 2%;
+        margin-right: auto%;
+        width: 100%;}
+        </style>""", unsafe_allow_html=True,)
+
         
         selected = option_menu(menu_title = None, options = ['Signup', 'Login', 'Forget Password'], 
             icons=[ 'person', 'person-add', 'key'], menu_icon="cast", default_index=1, orientation = "horizontal")
@@ -154,21 +165,21 @@ if __name__ == "__main__":
     unsafe_allow_html=True,
 )
     
-    st.markdown(
-    """
-    <style>
-    div[data-testid="stHeadingWithActionElements"]{
-         text-align: center;
-            display: block;
-            margin-left: 2%;
-            margin-right: auto%;
-            width: 100%;
+#     st.markdown(
+#     """
+#     <style>
+#     div[data-testid="stHeadingWithActionElements"]{
+#          text-align: center;
+#             display: block;
+#             margin-left: 2%;
+#             margin-right: auto%;
+#             width: 100%;
  
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+#     }
+#     </style>
+#     """,
+#     unsafe_allow_html=True,
+# )
 
   #####  
 

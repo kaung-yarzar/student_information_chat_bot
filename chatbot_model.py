@@ -93,7 +93,7 @@ def generate_response(user_input):
 def response_delay(response):
     for word in response.split():
         yield word + " "
-        time.sleep(0.15)
+        time.sleep(0.12)
 
 import re
 
