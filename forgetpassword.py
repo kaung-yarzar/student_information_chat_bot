@@ -10,10 +10,10 @@ collection = connect_user_collection()
 ## Forget Password Function
 def forget():
     with st.form('forget password'):
-        st.subheader('Forget Password')
+        st.subheader('Reset Password')
         email = st.text_input('Find your account : ', placeholder = 'Enter your email')
         
-        if st.form_submit_button('Find', type='primary'):
+        if st.form_submit_button('Find'):
             user = collection.find_one({"email": email})
             st.session_state['user'] = user
             st.markdown("    ")

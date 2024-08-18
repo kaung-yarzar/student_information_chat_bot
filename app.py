@@ -1,18 +1,6 @@
 import streamlit as st
 st.set_page_config(page_title = 'Student Information Chatbot', page_icon = '🕯️',initial_sidebar_state='collapsed')
 
-import nltk
-import nltk
-dler = nltk.downloader.Downloader()
-dler._update_index()
-dler.download('all')
-
-nltk.download('punkt')
-nltk.download('punkt_tab')
-nltk.download('wordnet')
-nltk.download('stopwords')
-
-
 if "role" not in st.session_state:
     st.session_state.role = ''
 
@@ -22,21 +10,12 @@ if 'user' not in st.session_state:
 if "issuccess" not in st.session_state:
     st.session_state.issuccess = ''
 
-if "changepassword" not in st.session_state:
-    st.session_state.changepassword = None
-
-if "changequestion" not in st.session_state:
-    st.session_state.changequestion = None
-
-
-
 
 from connect_db import connect_user_collection
 from chatbot_model import chatbot
 from signup import sign_up
 from forgetpassword import forget
 from changepassword import change_password
-from changesecurityquestion import change_security_question
 from streamlit_option_menu import option_menu
 
 
@@ -45,7 +24,7 @@ from streamlit_option_menu import option_menu
 
 
 ## Login Authenticate
-#@st.cache_resource
+@st.cache_resource
 def authenticate(username, password):
     collection = connect_user_collection()
     admin = collection.find_one({"username": username, "password": password})
@@ -62,7 +41,7 @@ def login():
         username = st.text_input("Username :")
         password = st.text_input("Password :", type="password")
 
-        if st.form_submit_button("Login", type='primary'):
+        if st.form_submit_button("Login"):
             if authenticate(username, password):
                 st.session_state['role'] = username  # Mark the user as logged in
                 st.rerun()
@@ -80,44 +59,22 @@ def main():
     # Check if the user is already logged in
     if st.session_state['role']:
         
-        chatbot()
-        username = st.session_state['role']
-        st.sidebar.header(f"WELCOME   :blue[{username.upper()}]") 
-        st.sidebar.divider()
         
+
+        chatbot()
+
         with st.sidebar:
             change_password()
-        with st.sidebar:
-            change_security_question()
         st.sidebar.divider()
-
-        def logout_button():
-            st.session_state.pop("role")
-            st.session_state.pop("changepassword") 
-            st.session_state.pop("changequestion") 
-
-        st.sidebar.button("Logout", use_container_width=True, on_click=logout_button, type='primary')   # Clear the login status
-
-        #st.toast('Welcome', icon='😍')
-
-
-            
+        if st.sidebar.button("Logout", use_container_width=True):
+            st.session_state.pop("role")  # Clear the login status
+            st.rerun()      # double click နေရလို့ 2 ခါ run ပေးရ
+            st.toast('Welcome', icon='😍')
     else:
-        st.markdown("<h1 style='text-align: center;'>Student Information Chatbot</h1>", unsafe_allow_html=True)
-        #st.title('Student Information Chatbot')
+        #st.markdown("<h1 style='text-align: center;'>Student Information Chatbot</h1>", unsafe_allow_html=True)
+        st.title('Student Information Chatbot')
         st.markdown(' ')
         st.markdown(' ')
-
-        st.markdown("""
-        <style>
-        div[data-testid="stHeadingWithActionElements"]{
-        text-align: center;
-        display: block;
-        margin-left: 2%;
-        margin-right: auto%;
-        width: 100%;}
-        </style>""", unsafe_allow_html=True,)
-
         
         selected = option_menu(menu_title = None, options = ['Signup', 'Login', 'Forget Password'], 
             icons=[ 'person', 'person-add', 'key'], menu_icon="cast", default_index=1, orientation = "horizontal")
@@ -175,21 +132,21 @@ if __name__ == "__main__":
     unsafe_allow_html=True,
 )
     
-#     st.markdown(
-#     """
-#     <style>
-#     div[data-testid="stHeadingWithActionElements"]{
-#          text-align: center;
-#             display: block;
-#             margin-left: 2%;
-#             margin-right: auto%;
-#             width: 100%;
+    st.markdown(
+    """
+    <style>
+    div[data-testid="stHeadingWithActionElements"]{
+         text-align: center;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
  
-#     }
-#     </style>
-#     """,
-#     unsafe_allow_html=True,
-# )
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
   #####  
 
