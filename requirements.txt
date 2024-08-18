@@ -1,0 +1,5 @@
+nltk
+pymongo
+scikit-learn
+streamlit-option-menu
+numpy
