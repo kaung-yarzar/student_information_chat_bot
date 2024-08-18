@@ -1,6 +1,11 @@
 import streamlit as st
 st.set_page_config(page_title = 'Student Information Chatbot', page_icon = '🕯️',initial_sidebar_state='collapsed')
 
+import nltk
+nltk.download('punkt')
+nltk.download('punkt_tab')
+nltk.download('wordnet')
+nltk.download('stopwords')
 
 
 if "role" not in st.session_state:
