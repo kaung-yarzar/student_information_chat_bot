@@ -114,7 +114,7 @@ def chatbot():
   with st.chat_message("user", avatar="🧑‍💻"):
          st.write((welcome))
 
-  st.session_state.messages.append({"role": "user", "content": prompt, "avatar" : "🧑‍💻"}) 
+  st.session_state.messages.append({"role": "user", "content": welcome, "avatar" : "🧑‍💻"}) 
          
   #st.session_state.messages.append({"role": "user", "content": welcome, "avatar" : "🧑‍💻"})
 
