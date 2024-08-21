@@ -105,19 +105,18 @@ def chatbot():
   #     st.session_state.messages = []
 
 
+  welcome = "Hello Wecome from TU Meiktila Student Information Chatbot. You can ask me questions about TU Meiktila..."
+  with st.chat_message("user", avatar="🧑‍💻"):
+         st.write((welcome))
+
+  st.session_state.messages.append({"role": "user", "content": welcome, "avatar" : "🧑‍💻"}) 
+         
   # Display chat messages from history on app rerun
   for message in st.session_state.messages:
       with st.chat_message(message["role"], avatar= message["avatar"]):
           st.markdown(message["content"])
 
-  welcome = "Hello Wecome from TU Meiktila Student Information Chatbot. You can ask me questions about TU Meiktila..."
-  st.session_state.messages.append({"role": "user", "content": welcome, "avatar" : "🧑‍💻"}) 
-  with st.chat_message("user", avatar="🧑‍💻"):
-         st.write((welcome))
 
-
-         
-  #st.session_state.messages.append({"role": "user", "content": welcome, "avatar" : "🧑‍💻"})
 
   # React to user input
   if prompt := st.chat_input("What can I assist you?"):
