@@ -85,6 +85,7 @@ def main():
             st.session_state.pop("role")
             st.session_state.pop("changepassword") 
             st.session_state.pop("changequestion") 
+            st.session_state.pop("message")
 
         st.sidebar.button("Logout", use_container_width=True, on_click=logout_button, type='primary')   # Clear the login status
 
@@ -128,7 +129,7 @@ def main():
 
 
 if __name__ == "__main__":
-    
+    #st.markdown(st.session_state)
     main()
 
 ### CSS Style Inject
