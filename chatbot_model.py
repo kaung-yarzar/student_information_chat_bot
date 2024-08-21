@@ -98,7 +98,7 @@ def response_delay(response):
 import re
 
 def chatbot():
-  st.title('Student Information Chatbot')
+  st.title('TU Meiktila Student Information Chatbot')
   
   # Initialize chat history
   # if "messages" not in st.session_state:

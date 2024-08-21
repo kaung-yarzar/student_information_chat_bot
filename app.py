@@ -95,7 +95,7 @@ def main():
 
             
     else:
-        st.markdown("<h1 style='text-align: center;'>Student Information Chatbot</h1>", unsafe_allow_html=True)
+        st.markdown("<h1 style='text-align: center;'>TU Meiktila Student Information Chatbot</h1>", unsafe_allow_html=True)
         #st.title('Student Information Chatbot')
         st.markdown(' ')
         st.markdown(' ')
