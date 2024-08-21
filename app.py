@@ -86,7 +86,7 @@ def main():
             st.session_state.pop("role")
             st.session_state.pop("changepassword") 
             st.session_state.pop("changequestion") 
-            st.session_state.pop("message")
+            st.session_state.pop("messages")
 
         st.sidebar.button("Logout", use_container_width=True, on_click=logout_button, type='primary')   # Clear the login status
 
