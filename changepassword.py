@@ -1,6 +1,6 @@
 import streamlit as st
 from connect_db import connect_user_collection
-
+import re
 
 
 collection = connect_user_collection()
@@ -8,6 +8,9 @@ collection = connect_user_collection()
 def insert_password(username, new_password):
     collection.update_one({"username": username}, {"$set": {"password": new_password}})
 
+def check_password(p):
+    pattern = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[_@$!?*&^%#:;]).{8,}$"
+    return bool(re.match(pattern, p))
 
 
 def change_password():
@@ -33,7 +36,7 @@ def change_password():
                     
                     user = collection.find_one({"username": username, "password": current_password})
                     if user:
-                        if len(new_password) > 7:
+                        if check_password(new_password):
                             if new_password == new_password_retype:
                                 insert_password(username, new_password)
                                 
@@ -43,7 +46,8 @@ def change_password():
                             else:
                                 st.toast("Passwords doesn't Match", icon='❌')
                         else:
-                            st.toast('Password must contain at least 8 characters', icon='❌')
+
+                            st.toast('Password should contains at least 8 characters, one uppercase letter, one lowercase letter, one digit and one special character', icon='❌')
                     else:
                         st.toast("Current Password is not Correct", icon='❌')
 

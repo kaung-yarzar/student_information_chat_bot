@@ -1,4 +1,5 @@
 import streamlit as st
+import re
 from connect_db import connect_user_collection
 #from forgetpassword import check_user_exist
 collection = connect_user_collection()
@@ -6,6 +7,10 @@ collection = connect_user_collection()
 
 
 ###kkyyzz
+
+def check_password(p):
+    pattern = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[_@$!?*&^%#:;]).{8,}$"
+    return bool(re.match(pattern, p))
 
 
 #st.markdown(st.session_state['user'])
@@ -50,7 +55,7 @@ try:
 
             if st.form_submit_button('Change'):
 
-                if len(new_password) > 7:
+                if check_password(new_password):
 
                     result = collection.update_one(
                                     {"username": username},
@@ -59,8 +64,7 @@ try:
                     st.success('Password Reset Successful!')
 
                 else:
-                    st.error('Password Must Contain at Least 8 Characters')
-
+                    st.error('Password should contains at least 8 characters, one uppercase letter, one lowercase letter, one digit and one special character')
     c1,c2,c3 =st.columns(3)
     with c2:
         st.page_link("app.py", label="Go back to Home Page", icon="🏠")

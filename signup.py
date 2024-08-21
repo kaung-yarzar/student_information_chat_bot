@@ -32,7 +32,8 @@ def validate_username(u):
 
 ## Checking email is in true format
 def check_email(e):
-    pattern = "^[a-z0-9_]+@[a-z0-9]+\.[a-z]{1,3}$"
+    # pattern = "^[a-z0-9_]+@[a-z0-9]+\.[a-z]{1,3}$"
+    pattern = "^[a-z0-9_]+@tumeiktila\.edu\.mm$"
     if re.match(pattern, e):
         return True
 
@@ -44,6 +45,10 @@ def check_username(u):
     if re.match(pattern, u):
         return True
 
+
+def check_password(p):
+    pattern = r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[_@$!?*&^%#:;]).{8,}$"
+    return bool(re.match(pattern, p))
 
 
 ## Sign Up Function 
@@ -80,7 +85,7 @@ def sign_up():
                             if check_username(username) ==True:
                                 if validate_username(username) == True:
                                     if len(username) > 3:
-                                        if len(password) > 7:
+                                        if check_password(password):
                                                 if password == confirm_password:
                                                     if len(answer) > 2:
                                                         #hashed_password = stauth.Hasher([confirm_password]).generate()
@@ -92,7 +97,7 @@ def sign_up():
                                                 else:
                                                     st.error('Password Does Not Match')
                                         else:
-                                            st.error('Password Should Have at Least 8 Characters')
+                                            st.error('Password should contains at least 8 characters, one uppercase letter, one lowercase letter, one digit and one special character')
                                     else:
                                         st.error('Username Should Have At Least 4 Characters')
                                 else:
@@ -104,7 +109,7 @@ def sign_up():
                     else:
                         st.error('Your Account Is Already Exist. Please Try to Login Instead')
                 else:
-                    st.error('Enter a Correct Email Address')
+                    st.error('Please Enter an TU Meiktila Edu mail Address')
             else:
                 st.error('Please fill out all **Required** fields')
         
