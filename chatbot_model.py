@@ -101,8 +101,8 @@ def chatbot():
   st.title('Student Information Chatbot')
   
   # Initialize chat history
-  if "messages" not in st.session_state:
-      st.session_state.messages = []
+  # if "messages" not in st.session_state:
+  #     st.session_state.messages = []
 
 
   # Display chat messages from history on app rerun

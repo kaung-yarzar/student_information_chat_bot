@@ -18,7 +18,8 @@ if "changepassword" not in st.session_state:
 if "changequestion" not in st.session_state:
     st.session_state.changequestion = None
 
-
+if "messages" not in st.session_state:
+      st.session_state.messages = []
 
 
 from connect_db import connect_user_collection
