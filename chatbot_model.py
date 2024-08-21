@@ -114,7 +114,7 @@ def chatbot():
 
   with st.chat_message("user", avatar="🧑‍💻"):
          welcome = "Hello Wecome from TU Meiktila Student Information Chatbot. You can ask me questions about TU Meiktila..."
-         st.markdown(f"{generate_response(welcome)}")
+         st.markdown(f"{response_delay(welcome)}")
          
   st.session_state.messages.append({"role": "user", "content": welcome, "avatar" : "🧑‍💻"})
 
