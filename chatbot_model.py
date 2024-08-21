@@ -98,7 +98,9 @@ def response_delay(response):
 import re
 
 def chatbot():
-  st.title('TU Meiktila Student Information Chatbot')
+  # st.title('TU Meiktila Student Information Chatbot')
+  st.markdown("<h1 style='text-align: center;'>TU Meiktila Student Information Chatbot</h1>", unsafe_allow_html=True)
+
   
   # Initialize chat history
   # if "messages" not in st.session_state:
