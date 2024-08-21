@@ -113,8 +113,10 @@ def chatbot():
 
 
   with st.chat_message("user", avatar="🧑‍💻"):
-         st.markdown("Hello Wecome from TU Meiktila Student Information Chatbot. You can ask me questions about TU Meiktila...")
-  st.session_state.messages.append({"role": "user", "content": prompt, "avatar" : "🧑‍💻"})
+         welcome = "Hello Wecome from TU Meiktila Student Information Chatbot. You can ask me questions about TU Meiktila..."
+         st.markdown(welcome)
+         
+  st.session_state.messages.append({"role": "user", "content": welcome, "avatar" : "🧑‍💻"})
 
   # React to user input
   if prompt := st.chat_input("What can I assist you?"):
