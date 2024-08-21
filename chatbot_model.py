@@ -112,8 +112,11 @@ def chatbot():
 
 
   # React to user input
-  if prompt := st.chat_input("What is up?"):
+  if prompt := st.chat_input("What can I assist you?"):
       
+      with st.chat_message("user", avatar="🧑‍💻"):
+         st.markdown("Hello Wecome from TU Meiktila Student Information Chatbot. You can ask me questions about TU Meiktila...")
+
       # Display user message in chat message container
       with st.chat_message("user", avatar="🧑‍💻"):
           st.markdown(prompt)
