@@ -8,6 +8,7 @@ Created with Python and Streamlit UI. Deployed on Streamlit Cloud.
 Detailed Report is provided Here - 
 
 To run Online: https://studentinformationchatbot.streamlit.app/
+
 To run Offline: -Requirements are provided in requirements.txt -start run from home.py
 
 
