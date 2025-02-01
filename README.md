@@ -1,8 +1,7 @@
 # student_information_chat_bot
 Lightweight NLP chatbot for Technological University Meiktila.
 Admin Control Pannel for Student Information Chatbot.
-Connected with MongoDB.
-For Visualization of Trained Texts and Manipulation of Data.
+Connected with MongoDB for Visualization of Trained Texts and Manipulation of Data.
 Created with Python and Streamlit UI. Deployed on Streamlit Cloud.
 
 Detailed Report is provided Here - 
